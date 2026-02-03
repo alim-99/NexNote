@@ -59,4 +59,4 @@
     npm run dev
     ```
 
-The application should now be running at `http://localhost:3000`
+The application should now be running at `https://nex-note-nu.vercel.app/`
