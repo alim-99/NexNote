@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 export const createNote = async (formData: CreateNoteParams) => {
       const { userId } = await auth();
 
-      const supabase = await createSupbaseClient();
+      const supabase = createSupbaseClient();
 
       const { title, content, tags, category, summary } = formData;
 
@@ -44,7 +44,7 @@ export const getNotes = async () => {
                   return [];
             }
 
-            const supabase = await createSupbaseClient();
+            const supabase = createSupbaseClient();
 
       const { data, error } = await supabase.from('notes').select('*').eq('user_id', userId);
 
@@ -61,7 +61,7 @@ export const getNotes = async () => {
 }
 
 export const updateNote = async ({ noteId, updates }: UpdateNoteParams) => {
-      const supabase = await createSupbaseClient();
+      const supabase = createSupbaseClient();
 
       const { data, error } = await supabase
             .from('notes')
@@ -86,7 +86,7 @@ export const updateNote = async ({ noteId, updates }: UpdateNoteParams) => {
 }
 
 export const addSummary = async ({ noteId, summary }: { noteId: string, summary: string }) => {
-      const supabase = await createSupbaseClient();
+      const supabase = createSupbaseClient();
 
       const { data, error } = await supabase
             .from('notes')
@@ -109,7 +109,7 @@ export const deleteNote = async (noteId: string) => {
             throw new Error('Unauthorized');
       }
 
-      const supabase = await createSupbaseClient();
+      const supabase = createSupbaseClient();
 
       const { error } = await supabase
             .from('notes')
@@ -129,7 +129,7 @@ export const getNoteDetails = async (noteId: string) => {
       const { userId } = await auth();
       if (!userId) return notFound();
 
-      const supabase = await createSupbaseClient()
+      const supabase = createSupbaseClient()
       const { data: note, error } = await supabase
             .from('notes')
             .select('*')

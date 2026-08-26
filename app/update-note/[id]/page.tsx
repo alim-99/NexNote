@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { Note, PageProps } from '@/types';
 
 const UpdateNotePage = async ({ params }: PageProps) => {
-      const note = await getNoteDetails(params.id);
+      const { id } = await params;
+      const note = await getNoteDetails(id);
 
       if (!note) {
             notFound();

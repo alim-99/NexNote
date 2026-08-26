@@ -10,9 +10,9 @@ export interface Note {
 }
 
 export interface PageProps {
-      params: {
+      params: Promise<{
             id: string;
-      };
+      }>;
 }
 
 export interface UpdateNoteParams {
@@ -43,8 +43,4 @@ export interface CreateNoteParams {
       tags: Array<string>;
       category: string;
       summary?: string;
-}
-
-export interface PageProps {
-      params: { id: string }
 }

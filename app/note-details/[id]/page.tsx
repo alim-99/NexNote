@@ -3,8 +3,12 @@ import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getNoteDetails } from '@/lib/actions/notes.actions';
 
-export default async function NoteDetailsPage({ params }: { params: { id: string } }) {
-    const { id } = params;
+export default async function NoteDetailsPage({
+    params,
+}: {
+    params: Promise<{ id: string }>;
+}) {
+    const { id } = await params;
     if (!id) return notFound();
 
     const noteDetails = await getNoteDetails(id);
