@@ -169,7 +169,7 @@ const CreateNoteForm = () => {
                                     </FormItem>
                               )}
                         />
-                        <Button className="bg-white hover:bg-gray-300" type="submit">Create Note</Button>
+                        <Button className="bg-slate-500 hover:bg-slate-400" type="submit">Create Note</Button>
                         <Toaster position="top-center" reverseOrder={false} />
                   </form>
             </Form>
